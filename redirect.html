@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
     <title>Redirecting...</title>
-    <meta charset="utf-8" />
     <script>
-      const path = window.location.pathname; // e.g. /products/abc123
-      const fullUrl = `https://abdulla-khan.github.io${path}`;
+      const productId = window.location.pathname.split("/").pop();
+      const fallbackUrl =
+        "https://play.google.com/store/apps/details?id=com.example.fitted"; // Android fallback
+      const iosAppStoreUrl = "https://apps.apple.com/app/idYOUR_APP_ID"; // Replace with real App Store link
 
-      // Attempt to open in app
-      window.location.href = fullUrl;
+      // iOS detection
+      const isIOS =
+        /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-      // Fallback to Play Store if app not installed
-      setTimeout(function () {
-        window.location.href =
-          "https://play.google.com/store/apps/details?id=com.example.fitted";
+      // Try to open the app via universal link (will be handled if app is installed)
+      const deepLink = `https://abdulla-khan.github.io/products/${productId}`;
+      window.location.href = deepLink;
+
+      // Fallback after delay
+      setTimeout(() => {
+        window.location.href = isIOS ? iosAppStoreUrl : fallbackUrl;
       }, 1500);
     </script>
   </head>
   <body>
-    <p>Redirecting to app...</p>
+    <p>Redirecting to the app...</p>
   </body>
 </html>
