@@ -6,18 +6,19 @@
     <script>
       const productId = window.location.pathname.split("/").pop();
       const fallbackUrl =
-        "https://play.google.com/store/apps/details?id=com.example.fitted"; // Android fallback
-      const iosAppStoreUrl = "https://apps.apple.com/app/idYOUR_APP_ID"; // Replace with real App Store link
+        "https://play.google.com/store/apps/details?id=com.softthree.studly";
+      const iosAppStoreUrl = "https://apps.apple.com/app/idYOUR_APP_ID";
 
-      // iOS detection
       const isIOS =
         /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-      // Try to open the app via universal link (will be handled if app is installed)
-      const deepLink = `https://abdulla-khan.github.io/products/${productId}`;
+      // 🔥 Use your custom URI scheme or app link domain
+      const deepLink = `fitted://product/${productId}`;
+
+      // Try opening the app
       window.location.href = deepLink;
 
-      // Fallback after delay
+      // Fallback after 1.5s
       setTimeout(() => {
         window.location.href = isIOS ? iosAppStoreUrl : fallbackUrl;
       }, 1500);
