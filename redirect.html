@@ -12,9 +12,8 @@
         const iosAppStoreUrl = "https://apps.apple.com/pk/app/studly/id6736399909";
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-        // Use HTTPS App Link instead of custom scheme
-       const deepLink = `https://abdulla-khan.github.io/redirect.html?productId=${productId}`;
-
+        // App deep link route
+        const deepLink = `studly://product/${productId}`;
 
         // Try opening the app
         window.location.href = deepLink;
