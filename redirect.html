@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting...</title>
+    <script>
+      window.onload = function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get("productId");
+
+        const fallbackUrl = "https://play.google.com/store/apps/details?id=com.softthree.studly";
+        const iosAppStoreUrl = "https://apps.apple.com/pk/app/studly/id6736399909";
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+        // Use HTTPS App Link instead of custom scheme
+        const deepLink = `https://abdulla-khan.github.io/product/${productId}`;
+
+        // Try opening the app
+        window.location.href = deepLink;
+
+        // Fallback after 1.5s if app not installed
+        setTimeout(() => {
+          window.location.href = isIOS ? iosAppStoreUrl : fallbackUrl;
+        }, 1500);
+      };
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to the app...</p>
+  </body>
+</html>
