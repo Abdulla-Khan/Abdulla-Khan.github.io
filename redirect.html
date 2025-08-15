@@ -13,7 +13,8 @@
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
         // Use HTTPS App Link instead of custom scheme
-        const deepLink = `https://abdulla-khan.github.io/product/${productId}`;
+       const deepLink = `https://abdulla-khan.github.io/redirect.html?productId=${productId}`;
+
 
         // Try opening the app
         window.location.href = deepLink;
