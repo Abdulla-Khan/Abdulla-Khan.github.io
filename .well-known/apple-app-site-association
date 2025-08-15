@@ -1,13 +1,1 @@
-{
-  "applinks": {
-    "apps": [],
-    "details": [
-      {
-        "appID": "W7J832VH7L.com.example.fitted",
-        "paths": [
-          "/*"
-        ]
-      }
-    ]
-  }
-}
+{"applinks":{"apps":[],"details":[{"appID":"W7J832VH7L.com.example.fitted","paths":["/*"]}]}}
